@@ -40,16 +40,16 @@ fi
 alias pac="${_pacman_frontend}"
 
 # Installs packages from repositories.
-alias paci="${_pacman_sudo}${_pacman_frontend} --sync"
+alias paci="${_pacman_frontend} --sync"
 
 # Installs packages from files.
-alias pacI="${_pacman_sudo}${_pacman_frontend} --upgrade"
+alias pacI="${_pacman_frontend} --upgrade"
 
 # Removes packages and unneeded dependencies.
-alias pacx="${_pacman_sudo}${_pacman_frontend} --remove"
+alias pacx="${_pacman_frontend} --remove"
 
 # Removes packages, their configuration, and unneeded dependencies.
-alias pacX="${_pacman_sudo}${_pacman_frontend} --remove --nosave --recursive"
+alias pacX="${_pacman_frontend} --remove --nosave --recursive"
 
 # Displays information about a package from the repositories.
 alias pacq="${_pacman_frontend} --sync --info"
@@ -64,22 +64,35 @@ alias pacs="${_pacman_frontend} --sync --search"
 alias pacS="${_pacman_frontend} --query --search"
 
 # Lists orphan packages.
-alias pacman-list-orphans="${_pacman_sudo}${_pacman_frontend} --query --deps --unrequired"
+alias pacman-list-orphans="${_pacman_frontend} --query --deps --unrequired"
 
 # Removes orphan packages.
-alias pacman-remove-orphans="${_pacman_sudo}${_pacman_frontend} --remove --recursive \$(${_pacman_frontend} --quiet --query --deps --unrequired)"
+alias pacman-remove-orphans="${_pacman_frontend} --remove --recursive \$(${_pacman_frontend} --quiet --query --deps --unrequired)"
 
 # Synchronizes the local package and Arch Build System databases against the
 # repositories.
 if (( $+commands[abs] )); then
-  alias pacu="${_pacman_sudo}${_pacman_frontend} --sync --refresh && ${_pacman_sudo}abs"
+  alias pacu="${_pacman_frontend} --sync --refresh && ${_pacman_sudo}abs"
 else
-  alias pacu="${_pacman_sudo}${_pacman_frontend} --sync --refresh"
+  alias pacu="${_pacman_frontend} --sync --refresh"
 fi
 
 # Synchronizes the local package database against the repositories then
 # upgrades outdated packages.
-alias pacU="${_pacman_sudo}${_pacman_frontend} --sync --refresh --sysupgrade"
+alias pacU="${_pacman_frontend} --sync --refresh --sysupgrade"
 
 unset _pacman_{frontend,sudo}
 
+# AUR commands
+
+# Upgrades AUR packages only
+alias yaU="${_pacman_frontend} -Syua"
+
+# Upgrade AUR packages without asking for edits
+alias yau="${_pacman_frontend} -Syua --noedit"
+
+# Search AUR packages
+alias yas="${_pacman_frontend} -Ssa"
+
+# Display info about AUR package
+alias yaq="${_pacman_frontend} -Sia"

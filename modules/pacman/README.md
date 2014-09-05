@@ -42,6 +42,13 @@ Aliases
 
 ### Frontends
 
+### Pacaur
+
+  - `yas` seaches AUR packages.
+  - `yaq` displays information about an AUR package.
+  - `yaU` updates outdated AUR packages.
+  - `yau` updates outdated AUR packages without asking about editing files.
+
 #### Yaourt
 
   - `pacc` manages *.pac\** files.

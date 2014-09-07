@@ -83,20 +83,24 @@ fi
 
 # Synchronizes the local package database against the repositories then
 # upgrades outdated packages.
-alias pacU="${_pacman_frontend} -Syu"
-
-unset _pacman_{frontend,sudo}
+if [ "${_pacman_frontend}" = "pacaur" ];then
+    alias pacU="${_pacman_frontend} -Syur"
+else
+    alias pacU="${_pacman_frontend} -Syu"
+fi
 
 # AUR commands
 
 # Upgrades AUR packages only
-alias yaU="${_pacman_frontend} -Syua"
+alias yaU="${_pacman_frontend} -Sua"
 
 # Upgrade AUR packages without asking for edits
-alias yau="${_pacman_frontend} -Syua --noedit"
+alias yau="${_pacman_frontend} -Sua --noedit"
 
 # Search AUR packages
 alias yas="${_pacman_frontend} -Ssa"
 
 # Display info about AUR package
 alias yaq="${_pacman_frontend} -Sia"
+
+unset _pacman_{frontend,sudo}

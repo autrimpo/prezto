@@ -40,6 +40,11 @@ alias bmenu="mygtkmenu ~/.config/GTKmenu/BspwmMenu > /dev/null"
 # mpdviz preset
 alias mviz="mpdviz -c blue -i --imode="dumb" -v spectrum"
 
+#transmission-daemon
+alias trstart="transmission-daemon"
+alias trview="transmission-remote-cli"
+alias trstop="transmission-remote --exit"
+
 # 4chan image downloader
 dta() {
   wget -O - $1 |

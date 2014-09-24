@@ -4,13 +4,24 @@
 
 # Aliases for editing of dotfiles
 
-alias vrc="pushd; cd; vim ~/.vimrc; popd"
-alias zrc="pushd; cd; vim ~/.zshrc; popd"
-alias zpc="pushd; cd; vim ~/.zpreztorc; popd"
-alias zev="pushd; cd; vim ~/.zshenv; popd"
-alias brc="pushd; cd ~/.config/bspwm; vim bspwmrc; popd"
-alias sxrc="pushd; cd ~/.config/sxhkd; vim sxhkdrc; popd"
-alias trc="pushd; cd ~/.config/termite; vim config; popd"
+function dotfileedit() {
+    if [ "$(pwd)" = "$(dirname $1)" ];then
+        vim $1
+    else
+        pushd
+        cd $(dirname $1)
+        vim $1
+        popd
+    fi
+}
+
+alias vrc="dotfileedit ~/.vimrc"
+alias zrc="dotfileedit ~/.zshrc"
+alias zpc="dotfileedit ~/.zpreztorc"
+alias zev="dotfileedit ~/.zshenv"
+alias brc="dotfileedit ~/.config/bspwm/bspwmrc"
+alias sxrc="dotfileedit ~/.config/sxhkd/sxhkdrc"
+alias trc="dotfileedit ~/.config/termite/config"
 
 # TODO helpers
 function atd() {

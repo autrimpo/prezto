@@ -29,7 +29,7 @@ function atd() {
 }
 
 function ltd() {
-    cat ~/TODO
+    sed = ~/TODO | sed 'N;s/\n/\t/'
 }
 
 function rtd() {

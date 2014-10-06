@@ -33,7 +33,8 @@ function ltd() {
 }
 
 function rtd() {
-    sed -i "/${1}/d" ~/TODO
+    #sed -i "/${1}/d" ~/TODO
+    sed -i "${1}d" ~/TODO
 }
 
 # sudo vim preserve environment

@@ -22,7 +22,8 @@ fi
 zstyle -s ':prezto:module:pacman' frontend '_pacman_frontend'
 
 if (( $+commands[$_pacman_frontend] )); then
-  alias pacman="$_pacman_frontend"
+  #alias pacman="$_pacman_frontend"
+  _pacman_sudo='sudo '
 
   if [[ -s "${0:h}/${_pacman_frontend}.zsh" ]]; then
     source "${0:h}/${_pacman_frontend}.zsh"
@@ -40,16 +41,16 @@ fi
 alias pac="${_pacman_frontend}"
 
 # Installs packages from repositories.
-alias paci="${_pacman_frontend} -S"
+alias paci="${_pacman_sudo}${_pacman_frontend} -S"
 
 # Installs packages from files.
-alias pacI="${_pacman_frontend} -U"
+alias pacI="${_pacman_sudo}${_pacman_frontend} -U"
 
 # Removes packages and unneeded dependencies.
-alias pacx="${_pacman_frontend} -Rs"
+alias pacx="${_pacman_sudo}${_pacman_frontend} -Rs"
 
 # Removes packages, their configuration, and unneeded dependencies.
-alias pacX="${_pacman_frontend} -Rns"
+alias pacX="${_pacman_sudo}${_pacman_frontend} -Rns"
 
 # Displays information about a package from the repositories.
 alias pacq="${_pacman_frontend} -Si"
@@ -58,49 +59,38 @@ alias pacq="${_pacman_frontend} -Si"
 alias pacQ="${_pacman_frontend} -Qi"
 
 # Searches for packages in the repositories.
-if [ "${_pacman_frontend}" = "pacaur" ];then
-    alias pacs="${_pacman_frontend} -Ssr"
-else
-    alias pacs="${_pacman_frontend} -Ss"
-fi
+alias pacs="${_pacman_frontend} -Ss"
 
 # Searches for packages in the local database.
 alias pacS="${_pacman_frontend} -Qs"
 
 # Lists orphan packages.
-alias pacman-list-orphans="${_pacman_frontend} --query --deps --unrequired"
+alias paco="${_pacman_frontend} -O"
 
 # Removes orphan packages.
-alias pacman-remove-orphans="${_pacman_frontend} --remove --recursive \$(${_pacman_frontend} --quiet --query --deps --unrequired)"
+alias pacox"${_pacman_sudo}${_pacman_frontend} --remove --recursive \$(${_pacman_frontend} --quiet --query --deps --unrequired)"
 
 # Synchronizes the local package and Arch Build System databases against the
 # repositories.
 if (( $+commands[abs] )); then
-  alias pacu="${_pacman_frontend} -Sy && ${_pacman_sudo}abs"
+  alias pacu="${_pacman_sudo}${_pacman_frontend} -Sy && ${_pacman_sudo}abs"
 else
-  alias pacu="${_pacman_frontend} -Sy"
+  alias pacu="${_pacman_sudo}${_pacman_frontend} -Sy"
 fi
 
 # Synchronizes the local package database against the repositories then
 # upgrades outdated packages.
-if [ "${_pacman_frontend}" = "pacaur" ];then
-    alias pacU="${_pacman_frontend} -Syur"
-else
-    alias pacU="${_pacman_frontend} -Syu"
-fi
+alias pacU="${_pacman_sudo}${_pacman_frontend} -Syu"
 
 # AUR commands
 
 # Upgrades AUR packages only
-alias yaU="${_pacman_frontend} -Sua"
-
-# Upgrade AUR packages without asking for edits
-alias yau="${_pacman_frontend} -Sua --noedit"
+alias yaU="${_pacman_sudo}${_pacman_frontend} -ASu"
 
 # Search AUR packages
-alias yas="${_pacman_frontend} -Ssa"
+alias yas="${_pacman_frontend} -ASs"
 
 # Display info about AUR package
-alias yaq="${_pacman_frontend} -Sia"
+alias yaq="${_pacman_frontend} -ASi"
 
 unset _pacman_{frontend,sudo}

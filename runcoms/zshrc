@@ -12,3 +12,8 @@ fi
 
 # Customize to your needs...
 
+    # Base16 Shell
+    BASE16_SCHEME="paraiso"
+    BASE16_VAR="dark"
+    BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.$BASE16_VAR.sh"
+    [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL

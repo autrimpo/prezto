@@ -64,3 +64,6 @@ dta() {
   uniq |
   xargs wget
 }
+
+#PST time
+alias pst="TZ=America/Los_Angeles date"

@@ -85,7 +85,10 @@ alias pacU="${_pacman_sudo}${_pacman_frontend} -Syu"
 # AUR commands
 
 # Upgrades AUR packages only
-alias yaU="${_pacman_sudo}${_pacman_frontend} -ASu"
+alias yau="${_pacman_sudo}${_pacman_frontend} -Au"
+
+# Upgrade all AUR packages, show PKGBUILD diffs, and remove unneeded makedeps after installation
+alias yaU="${_pacman_sudo}${_pacman_frontend} -Akua"
 
 # Search AUR packages
 alias yas="${_pacman_frontend} -ASs"

@@ -83,6 +83,8 @@ fi
 alias pacU="${_pacman_sudo}${_pacman_frontend} -Syu"
 
 # AUR commands
+# Installs a package from AUR
+alias yai="${_pacman_sudo}${_pacman_frontend} -Ai"
 
 # Upgrades AUR packages only
 alias yau="${_pacman_sudo}${_pacman_frontend} -Au"

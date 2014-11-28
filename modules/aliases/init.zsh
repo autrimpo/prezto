@@ -67,3 +67,6 @@ dta() {
 
 #PST time
 alias pst="TZ=America/Los_Angeles date"
+
+#mp3 convert
+alias c="contable"

@@ -70,3 +70,16 @@ alias pst="TZ=America/Los_Angeles date"
 
 #mp3 convert
 alias c="contable"
+
+#music backp
+alias musicbak="rsync -avzu --progress --delete-before ~/Music/ /mnt/Marvin/share/Music/Michal"
+
+function lyrics() {
+    if [ "$#" -eq "1" ];then
+        cat "$HOME/.lyrics/$(mpc | awk '{if(NR==1)print}').txt" | awk '{if(NR<='$1')print}'
+    elif [ "$#" -eq "2" ];then
+        cat "$HOME/.lyrics/$(mpc | awk '{if(NR==1)print}').txt" | awk '{if(NR>='$1'&& NR<='$2')print}'
+    else
+        echo "Usage: lyrics [FROM] TO"
+    fi
+}

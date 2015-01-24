@@ -83,3 +83,6 @@ function lyrics() {
         echo "Usage: lyrics [FROM] TO"
     fi
 }
+
+# root shell
+alias root="sudo -sE"

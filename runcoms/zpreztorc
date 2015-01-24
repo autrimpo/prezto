@@ -32,15 +32,15 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'prompt' \
   'archive' \
   'fasd' \
   'git' \
-  'history-substring-search' \
   'pacman' \
   'tmux' \
+  'aliases' \
+  'history-substring-search' \
   'syntax-highlighting' \
-  'aliases'
+  'prompt'
 
 #
 # Editor
@@ -129,8 +129,7 @@ zstyle ':prezto:module:prompt' theme 'hydra'
    'main' \
    'brackets' \
    'pattern' \
-   'cursor' \
-   'root'
+   'cursor'
 #
 # Set syntax highlighting styles.
 # zstyle ':prezto:module:syntax-highlighting' styles \
@@ -156,7 +155,7 @@ zstyle ':prezto:module:prompt' theme 'hydra'
 #
 
 # Auto start a session when Zsh is launched in a local terminal.
- #zstyle ':prezto:module:tmux:auto-start' local 'yes'
+# zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
 # Auto start a session when Zsh is launched in a SSH connection.
 # zstyle ':prezto:module:tmux:auto-start' remote 'yes'

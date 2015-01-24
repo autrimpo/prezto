@@ -42,8 +42,8 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
-  /home/koutak/{bin,scripts,.panel}
-  /home/koutak/.gem/ruby/2.1.0/bin
+  /home/koutak/{bin,scripts,scripts/panel}
+  /home/koutak/.gem/ruby/2.2.0/bin
   $path
 )
 
@@ -83,12 +83,20 @@ export PANEL_FIFO="/tmp/panel-fifo"
 #
 # Gnome Keyring
 #
-if [ -n "$DESKTOP_SESSION" ];then
-    eval $(gnome-keyring-daemon --start)
-    export SSH_AUTH_SOCK
+if [[ $UID != 0 && $EUID != 0 ]]; then
+    if [ -n "$DESKTOP_SESSION" ];then
+        eval $(gnome-keyring-daemon --start --components=ssh)
+        export SSH_AUTH_SOCK
+    fi
 fi
 
 #
 # Vi key timeout
 #
 export KEYTIMEOUT=1
+
+#
+# Java shenanigans fix
+#
+export _JAVA_AWT_WM_NONREPARENTING=1
+export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'

@@ -86,3 +86,6 @@ function lyrics() {
 
 # root shell
 alias root="sudo -sE"
+
+# use neovim
+alias vim=nvim

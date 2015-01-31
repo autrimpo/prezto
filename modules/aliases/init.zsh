@@ -88,4 +88,4 @@ function lyrics() {
 alias root="sudo -sE"
 
 # use neovim
-alias vim=nvim
+#alias vim=nvim

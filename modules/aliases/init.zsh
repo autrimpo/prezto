@@ -57,10 +57,10 @@ alias trstart="transmission-daemon"
 alias trview="transmission-remote-cli"
 alias trstop="transmission-remote --exit"
 
-# 4chan image downloader
+# 8chan image downloader
 dta() {
   wget -O - $1 |
-  grep -Eo 'i.4cdn.org/[^"]+' |
+  grep -Eo 'media.8ch.net/[^"]+/src/[^"]+' |
   uniq |
   xargs wget
 }

@@ -42,8 +42,8 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
-  /home/koutak/{bin,scripts,scripts/panel}
-  /home/koutak/.gem/ruby/2.2.0/bin
+  ~/{bin,scripts,scripts/panel}
+  ~/.gem/ruby/2.2.0/bin
   $path
 )
 

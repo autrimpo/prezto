@@ -8,7 +8,6 @@ function dotfileedit() {
     if [ "$(pwd)" = "$(dirname $1)" ];then
         vim $1
     else
-        pushd
         cd $(dirname $1)
         vim $1
         popd
@@ -86,6 +85,9 @@ function lyrics() {
 
 # root shell
 alias root="sudo -sE"
+
+# unmount
+alias uu='devmon --unmount-all'
 
 # use neovim
 #alias vim=nvim

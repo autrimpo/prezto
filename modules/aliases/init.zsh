@@ -36,6 +36,8 @@ function rtd() {
     sed -i "${1}d" ~/TODO
 }
 
+alias td="vim ~/TODO"
+
 # sudo vim preserve environment
 alias svim="sudo -E vim"
 

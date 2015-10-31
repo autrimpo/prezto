@@ -32,7 +32,6 @@ function ltd() {
 }
 
 function rtd() {
-    #sed -i "/${1}/d" ~/TODO
     sed -i "${1}d" ~/TODO
 }
 
@@ -45,7 +44,7 @@ alias svim="sudo -E vim"
 alias makemake="cp ~/.Makefile_temp ./Makefile"
 
 # Update pacman mirrors
-alias mirrupd="sudo reflector --verbose -l 200 -p http --sort rate --save /etc/pacman.d/mirrorlist"
+alias mirrupd="sudo reflector --verbose -l 64 -p http -p https -p ftp --sort rate --save /etc/pacman.d/mirrorlist"
 
 # Menu for bspwm actions
 alias bmenu="mygtkmenu ~/.config/GTKmenu/BspwmMenu > /dev/null"
@@ -92,4 +91,64 @@ alias root="sudo -sE"
 alias uu='devmon --unmount-all'
 
 # use neovim
-#alias vim=nvim
+# alias vim=nvim
+
+function 8dump()
+{
+if [[ "$#" -ne "3" ]]; then
+printf 'Usage: %s [TARGET] [DIRECTORY] [DELAY]\n' ${FUNCNAME}
+return
+fi
+
+printf '
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣤⣴⣶⣶⣶⣦⣤⣄⣀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣿⣿⣿⠟⠁⣾⠿⠛⠉⠉⠀⠈⠉⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿⣷
+⠀⠀⠀⠀⠀⠀⠀⣀⣤⣶⣶⣿⣿⣿⣿⣿⣷⣶⣦⣄⡀⠀⠀⠀⠀⢰⣿⠿⠋⠀⠀⠰⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣿⣿⣿⣿⣿⣿⣿⡇
+⠀⠀⠀⠀⢀⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⣀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣧
+⠀⠀⠀⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⡟
+⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⣿⣿⡇
+⠀⣾⣿⣿⣿⣿⣿⣿⡟⠋⠀⠀⠀⠀⠀⠈⠉⠛⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄⣀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⡿
+⣸⣿⣿⣿⣿⣿⣿⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣤⣤⣶⣾⣿⣿⣿⣿⣿⣿⣿⡿⠁
+⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁
+⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠁
+⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡆⠀⠀⣠⣴⣿⡇⠀⠀⠀⠈⠛⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠋⠁
+⠸⣿⣿⣿⣿⣿⣿⣿⣿⣦⣄⡀⠀⠀⠀⠀⢀⣠⣴⣿⢀⣠⣾⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠁
+⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣾⣿⣿⣿⣿⣷⣿⣿⣿⣿⡟⠁
+⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋
+⠀⠀⠀⠀⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠋
+⠀⠀⠀⠀⠀⠀⠈⠙⠛⠿⠿⣿⣿⣿⣿⠿⠿⠛⠋⠁
+
+'
+
+local _link=$1
+local _board=$(printf $1 | sed 's/^.*net\///; s/\/.*//')
+local _thread=$(printf $1 | sed 's/^.*res\///; s/\..*//')
+
+local _count=0
+local _total=$(ls "$2" | wc -l)
+
+for i in "$2"*; do
+_count=$(($_count+1))
+
+printf 'File: "%s" > Response: ' "$i"
+curl --user-agent "Mozilla/5.0" \
+--form "board=$_board" \
+--form "body=$_count/$_total" \
+--form "file=@$i" \
+--form "json_response=1" \
+--form "password=ayylmao" \
+--form "post=New Reply" \
+--form "thread=$_thread" \
+--referer "https://8ch.net" \
+"https://8ch.net/post.php"
+sleep $3
+printf '\n'
+done
+}
+
+function silent(){
+$@ &> /dev/null
+}

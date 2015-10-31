@@ -46,10 +46,12 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
-  ~/{bin,scripts,scripts/panel}
+  ~/{bin,scripts}
+  ~/scripts/{panel,aiu}
   ~/.gem/ruby/2.2.0/bin
   $path
 )
+systemctl --user import-environment PATH
 
 #
 # Less
@@ -81,6 +83,7 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 # Panel
 #
 export PANEL_FIFO="/tmp/panel-fifo"
+export PANEL_LARGE_FIFO="/tmp/panel-large-fifo"
 
 #
 # Gnome Keyring

@@ -53,8 +53,8 @@ function prompt_hydra_setup {
   zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format '%F{red}[REPLACE]%f'
   zstyle ':prezto:module:editor:info:keymap:alternate' format ' %B%F{green}❮%F{yellow}❮%F{red}❮%f%b'
 
-  prompt_main_true='%B%F{cyan}❯❯❯%f%b'
-  prompt_main_false='%B%F{magenta}%?:❮❮❮%f%b'
+  prompt_main_true='%B%F{cyan}%%%f%b'
+  prompt_main_false='%B%F{red}%?:%%%f%b'
   prompt_main=" %(?.${prompt_main_true}.${prompt_main_false}) "
 
 
